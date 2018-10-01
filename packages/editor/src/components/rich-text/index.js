@@ -628,7 +628,7 @@ export class RichText extends Component {
 				event.preventDefault();
 
 				if ( event.shiftKey || ! this.props.onSplit ) {
-					this.editor.execCommand( 'InsertLineBreak', false, event );
+					this.onChange( insert( this.getRecord(), '\n' ) );
 				} else {
 					this.splitContent();
 				}
