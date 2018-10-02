@@ -46,7 +46,7 @@ import {
  */
 import Autocomplete from '../autocomplete';
 import BlockFormatControls from '../block-format-controls';
-import { FORMATTING_CONTROLS } from './formatting-controls';
+import FormatEdit from './format-edit';
 import FormatToolbar from './format-toolbar';
 import TinyMCE from './tinymce';
 import { pickAriaProps } from './aria';
@@ -853,15 +853,6 @@ export class RichText extends Component {
 		const classes = classnames( wrapperClassName, 'editor-rich-text' );
 		const record = this.getRecord();
 
-		const formatToolbar = this.editor && (
-			<FormatToolbar
-				record={ record }
-				onChange={ this.onChange }
-				enabledControls={ formattingControls }
-				editor={ this.editor }
-			/>
-		);
-
 		return (
 			<div className={ classes }
 				ref={ this.containerRef }
@@ -869,12 +860,12 @@ export class RichText extends Component {
 			>
 				{ isSelected && ! inlineToolbar && (
 					<BlockFormatControls>
-						{ formatToolbar }
+						<FormatToolbar controls={ formattingControls } />
 					</BlockFormatControls>
 				) }
 				{ isSelected && inlineToolbar && (
 					<div className="editor-rich-text__inline-toolbar">
-						{ formatToolbar }
+						<FormatToolbar controls={ formattingControls } />
 					</div>
 				) }
 				{ isSelected &&
@@ -921,6 +912,7 @@ export class RichText extends Component {
 								</Tagname>
 							}
 							{ isSelected && <Slot name="RichText.Siblings" /> }
+							{ isSelected && <FormatEdit value={ record } onChange={ this.onChange } /> }
 						</Fragment>
 					) }
 				</Autocomplete>
@@ -930,7 +922,7 @@ export class RichText extends Component {
 }
 
 RichText.defaultProps = {
-	formattingControls: FORMATTING_CONTROLS.map( ( { format } ) => format ),
+	formattingControls: [ 'bold', 'italic', 'link', 'strikethrough' ],
 	format: 'rich-text',
 };
 
