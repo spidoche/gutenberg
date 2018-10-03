@@ -321,6 +321,24 @@ unsaved status values.
 
 Whether the post has been published.
 
+### isEditedPostDateFloating
+
+Returns whether the current post should be considered to have a "floating"
+date (i.e. that it would publish "Immediately" rather than at a set time).
+
+Unlike in the PHP backend, the REST API returns a full date string for posts
+where the 0000-00-00T00:00:00 placeholder is present in the database. To
+infer that a post is set to publish "Immediately" we check whether the date
+and modified date are the same.
+
+*Parameters*
+
+ * state: Editor state.
+
+*Returns*
+
+Whether the edited post has a floating date value.
+
 ### getBlockDependantsCacheBust
 
 Returns a new reference when the inner blocks of a given block client ID
