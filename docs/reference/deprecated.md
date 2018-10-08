@@ -10,6 +10,8 @@ Gutenberg's deprecation policy is intended to support backwards-compatibility fo
 - `wp.blocks.children.fromDOM` has been removed. Please use `wp.richTextValue.create` instead.
 - `wp.blocks.children.concat` has been removed. Please use `wp.richTextValue.concat` instead.
 - `wp.blocks.children.getChildrenArray` has been removed. Please use `wp.richTextValue.create` instead.
+- `wp.blocks.setUnknownTypeHandlerName` has been removed. Please use `setFreeformContentHandlerName` and `setUnregisteredTypeHandlerName` instead.
+- `wp.blocks.getUnknownTypeHandlerName` has been removed. Please use `getFreeformContentHandlerName` and `getUnregisteredTypeHandlerName` instead.
 
 ## 4.2.0
 
@@ -34,8 +36,6 @@ Gutenberg's deprecation policy is intended to support backwards-compatibility fo
 - `wp.components.Draggable` as a DOM node drag handler has been removed. Please, use `wp.components.Draggable` as a wrap component for your DOM node drag handler.
 - `wp.i18n.getI18n` has been removed. Use `__`, `_x`, `_n`, or `_nx` instead.
 - `wp.i18n.dcnpgettext` has been removed. Use `__`, `_x`, `_n`, or `_nx` instead.
-- `wp.blocks.setUnknownTypeHandlerName` has been removed. Please use `setFreeformContentHandlerName` and `setUnregisteredTypeHandlerName` instead.
-- `wp.blocks.getUnknownTypeHandlerName` has been removed. Please use `getFreeformContentHandlerName` and `getUnregisteredTypeHandlerName` instead.
 
 ## 3.9.0
 
